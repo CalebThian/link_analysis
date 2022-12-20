@@ -1,6 +1,5 @@
 import data
 import numpy as np
-import math
 
 path = "./data/graph_6.txt"
 
@@ -30,13 +29,13 @@ def HITS(adj_mat,n,e):
     return aut,hub
 
 def output_file(aut,hub,path):
-    outdir = "./output/"
+    outdir = "./results/"
     file = path.split('/')[-1]
-    file = outdir+file
+    file = outdir+file[:-4]+"/"+file
     a_file = file[:-4]+"_HITS_authority.txt"
     h_file = file[:-4]+"_HITS_hub.txt"
-    np.savetxt(a_file, aut, fmt='%f', delimiter=" ",newline=' ')
-    np.savetxt(h_file, aut, fmt='%f', delimiter=" ",newline=' ')
+    np.savetxt(a_file, aut, fmt='%3f', delimiter=" ",newline=' ')
+    np.savetxt(h_file, aut, fmt='%3f', delimiter=" ",newline=' ')
     
 if __name__ == "__main__":
     n,e = data.get_n_e(path)
