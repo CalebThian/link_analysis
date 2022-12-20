@@ -2,6 +2,11 @@ from config import g_info
 import numpy as np
 import networkx as nx
 import matplotlib.pyplot as plt
+import os
+
+def get_files(data_dir):
+    files = os.listdir(data_dir)
+    return files
 
 def read_file(path):
     with open (path, "r") as myfile:
