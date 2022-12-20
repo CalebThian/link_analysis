@@ -1,9 +1,6 @@
 from config import g_info
 import numpy as np
 
-data_path = "./data/"
-file = "graph_1.txt"
-
 def read_files(path):
     with open (path, "r") as myfile:
         data = myfile.read().splitlines()
@@ -19,7 +16,17 @@ def gen_graph(data,n,e):
         adj_mat[d[0]-1][d[1]-1] = 1
     return adj_mat
 
+def get_amat(path):
+    file = path.split('/')[-1]
+    n,e = g_info[file][0],g_info[file][1]
+    data = read_files(path)
+    adj_mat = gen_graph(data,n,e)
+    return adj_mat
+
 if __name__=="__main__":
+    data_path = "./data/"
+    file = "graph_1.txt"
+    
     n,e = g_info[file][0],g_info[file][1]
     data = read_files(data_path+file)
     adj_mat = gen_graph(data,n,e)
