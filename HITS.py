@@ -21,6 +21,7 @@ def HITS(adj_mat,n,e):
         #Normalization
         aut = aut/np.sum(aut)
         hub = hub/np.sum(hub)
+        
         if np.linalg.norm(aut-last_aut) + np.linalg.norm(hub-last_hub)<eps:
             break
         else:
@@ -28,13 +29,20 @@ def HITS(adj_mat,n,e):
             last_hub = hub.copy()
     return aut,hub
 
-
-
+def output_file(aut,hub,path):
+    outdir = "./output/"
+    file = path.split('/')[-1]
+    file = outdir+file
+    a_file = file[:-4]+"_HITS_authority.txt"
+    h_file = file[:-4]+"_HITS_hub.txt"
+    np.savetxt(a_file, aut, fmt='%f', delimiter=" ",newline=' ')
+    np.savetxt(h_file, aut, fmt='%f', delimiter=" ",newline=' ')
+    
 if __name__ == "__main__":
     n,e = data.get_n_e(path)
     data = data.get_amat(path)
-    print(data)
     aut,hub = HITS(data,n,e)
     print(aut)
     print(hub)
+    output_file(aut,hub,path)
     
