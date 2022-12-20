@@ -18,10 +18,16 @@ def construct_index(nodes):
 def read_file(path):
     with open (path, "r") as myfile:
         data = myfile.read().splitlines()
-    for i in range(len(data)):
-        data[i] = data[i].split(",")
-        data[i][0] = int(data[i][0])
-        data[i][1] = int(data[i][1])
+    if "ibm" not in path:
+        for i in range(len(data)):
+            data[i] = data[i].split(",")
+            data[i][0] = int(data[i][0])
+            data[i][1] = int(data[i][1])
+    else:
+        for i in range(len(data)):
+            data[i] = data[i].split()
+            #print(data[i])
+            data[i] = [int(data[i][1]),int(data[i][2])]
     return data
 
 def gen_graph(data):
@@ -42,6 +48,7 @@ def draw_graph(path):
     
 if __name__=="__main__":
     data_path = "./data/"
-    file = "graph_1.txt"
+    file = "ibm-5000.txt"
     data = read_file(data_path+file)
-    G = gen_graph(data,n,e)
+    G = gen_graph(data)
+    print(len(list(G.nodes)))
