@@ -27,9 +27,6 @@ def HITS(G):
                 aut[index[node]] += last_hub[index[p]]
             for c in chi:
                 hub[index[node]] += last_aut[index[c]]
-            
-            #aut[i] = np.sum(adj_mat.transpose()[i]*last_hub)
-            #hub[i] = np.sum(adj_mat[i]*last_aut)
           
         #Normalization
         aut = aut/np.sum(aut)
@@ -52,9 +49,6 @@ def output_file(aut,hub,path):
     np.savetxt(h_file, aut, fmt='%3f', delimiter=" ",newline=' ')
     
 if __name__ == "__main__":
-    #n,e = data.get_n_e(path)
-    #data = data.get_amat(path)
-    #aut,hub = HITS(data,n,e)
     G = data.get_graph(path)
     aut,hub = HITS(G)
     print(aut)
