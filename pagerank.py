@@ -2,7 +2,7 @@ import data
 import numpy as np
 import networkx as nx
 
-path = './data/graph_1.txt'
+path = './data/graph_6.txt'
 
 def pagerank(G,d=0.1):
     n = len(G.nodes)
@@ -28,9 +28,17 @@ def pagerank(G,d=0.1):
             break
         else:
             last_pr = pr.copy()
-    return pr   
+    return pr
+
+def output_file(pr,path):
+    outdir = "./results/"
+    file = path.split('/')[-1]
+    file = outdir+file[:-4]+"/"+file
+    file = file[:-4]+"_PageRank.txt"
+    np.savetxt(file, pr, fmt='%.3f', delimiter="",newline=' ')
 
 if __name__ == "__main__":
     G = data.get_graph(path)
     pr = pagerank(G)
     print(pr)
+    output_file(pr,path)
