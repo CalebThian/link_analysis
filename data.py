@@ -8,6 +8,14 @@ def get_files(data_dir):
     files = os.listdir(data_dir)
     return files
 
+def construct_index(nodes):
+    index = dict()
+    t = 0
+    for node in sorted(list(nodes)):
+        index[node] = t
+        t += 1
+    return index
+
 def read_file(path):
     with open (path, "r") as myfile:
         data = myfile.read().splitlines()

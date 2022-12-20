@@ -1,7 +1,7 @@
 import data
 import numpy as np
 
-path = "./data/graph_6.txt"
+path = "./data/graph_3.txt"
 
 def HITS(G):
     n = len(G.nodes)
@@ -11,11 +11,7 @@ def HITS(G):
     hub = np.ones(n)
     eps = 0.001
     
-    index = dict()
-    t = 0
-    for node in sorted(list(G.nodes)):
-        index[node] = t
-        t += 1
+    index = data.construct_index(G.nodes)
         
     while True:
         aut = np.zeros(n)
