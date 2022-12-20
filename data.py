@@ -32,12 +32,18 @@ def get_n_e(path):
 def gen_graph(data):
     graph = nx.DiGraph()
     graph.add_edges_from(data)
+    return graph
+
+def get_graph(path):
+    data = read_file(path)
+    graph = gen_graph(data)
     nx.draw(graph,with_labels=True)
     return graph
 
 def draw_graph(path):
     data = read_file(path)
-    gen_graph(data)
+    graph = gen_graph(data)
+    nx.draw(graph,with_labels=True)
     
 if __name__=="__main__":
     data_path = "./data/"
