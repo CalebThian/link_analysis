@@ -38,7 +38,6 @@ def gen_graph(data):
 def get_graph(path):
     data = read_file(path)
     graph = gen_graph(data)
-    nx.draw(graph,with_labels=True)
     return graph
 
 def draw_graph(path):

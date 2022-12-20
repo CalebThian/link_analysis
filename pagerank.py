@@ -1,9 +1,11 @@
 import data
 import numpy as np
 import networkx as nx
+from utils import timer
 
 path = './data/graph_6.txt'
 
+@timer
 def pagerank(G,d=0.1):
     n = len(G.nodes)
     index = data.construct_index(G.nodes)

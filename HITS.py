@@ -1,8 +1,10 @@
 import data
 import numpy as np
+from utils import timer
 
 path = "./data/graph_6.txt"
 
+@timer
 def HITS(G):
     n = len(G.nodes)
     last_aut = np.ones(n)

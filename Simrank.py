@@ -1,9 +1,10 @@
 import data
 import numpy as np
 import networkx as nx
-
+from utils import timer
 path = "./data/graph_5.txt"
 
+@timer
 def Simrank(G,C = 0.7,max_iter = 30):
     n = len(G.nodes)
     index = data.construct_index(G.nodes)
@@ -15,7 +16,6 @@ def Simrank(G,C = 0.7,max_iter = 30):
         print(i,end="\r")
         for node1 in sorted(list(G.nodes)):
             for node2 in sorted(list(G.nodes)):
-                
                 if node1 == node2:
                     simrank[index[node1]][index[node2]] = 1
                 else:
