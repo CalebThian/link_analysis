@@ -1,7 +1,7 @@
 import data
 import numpy as np
 
-path = "./data/graph_3.txt"
+path = "./data/graph_6.txt"
 
 def HITS(G):
     n = len(G.nodes)
@@ -41,8 +41,8 @@ def output_file(aut,hub,path):
     file = outdir+file[:-4]+"/"+file
     a_file = file[:-4]+"_HITS_authority.txt"
     h_file = file[:-4]+"_HITS_hub.txt"
-    np.savetxt(a_file, aut, fmt='%3f', delimiter=" ",newline=' ')
-    np.savetxt(h_file, aut, fmt='%3f', delimiter=" ",newline=' ')
+    np.savetxt(a_file, aut, fmt='%.3f', delimiter="",newline=' ')
+    np.savetxt(h_file, aut, fmt='%.3f', delimiter="",newline=' ')
     
 if __name__ == "__main__":
     G = data.get_graph(path)
