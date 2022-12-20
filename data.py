@@ -17,11 +17,15 @@ def gen_graph(data,n,e):
     return adj_mat
 
 def get_amat(path):
-    file = path.split('/')[-1]
-    n,e = g_info[file][0],g_info[file][1]
+    n,e = get_n_e(path)
     data = read_files(path)
     adj_mat = gen_graph(data,n,e)
     return adj_mat
+
+def get_n_e(path):
+    file = path.split('/')[-1]
+    n,e = g_info[file][0],g_info[file][1]
+    return n,e
 
 if __name__=="__main__":
     data_path = "./data/"
