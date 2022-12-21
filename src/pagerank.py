@@ -33,7 +33,7 @@ def pagerank(G,d=0.1):
     return pr
 
 def output_file(pr,path):
-    outdir = "./results/"
+    outdir = "../results/"
     file = path.split('/')[-1]
     file = outdir+file[:-4]+"/"+file
     file = file[:-4]+"_PageRank.txt"

@@ -32,7 +32,7 @@ def Simrank(G,C = 0.7,max_iter = 30):
     return simrank
 
 def output_file(sr,path):
-    outdir = "./results/"
+    outdir = "../results/"
     file = path.split('/')[-1]
     file = outdir+file[:-4]+"/"+file
     file = file[:-4]+"_SimRank.txt"

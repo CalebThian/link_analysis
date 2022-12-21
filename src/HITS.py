@@ -38,7 +38,7 @@ def HITS(G):
     return aut,hub
 
 def output_file(aut,hub,path):
-    outdir = "./results/"
+    outdir = "../results/"
     file = path.split('/')[-1]
     file = outdir+file[:-4]+"/"+file
     a_file = file[:-4]+"_HITS_authority.txt"
