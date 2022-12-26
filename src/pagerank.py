@@ -25,12 +25,12 @@ def pagerank(G,d=0.1):
                 for p in par:
                     pr_in += last_pr[index[p]]/outdegree[index[p]]
             pr[index[node]] = d/n+(1-d)*pr_in
-        pr = pr/np.sum(pr)
+        
         if np.linalg.norm(pr-last_pr) < eps:
             break
         else:
             last_pr = pr.copy()
-    return pr
+    return pr/np.sum(pr)
 
 def output_file(pr,path):
     outdir = "../results/"
